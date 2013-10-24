@@ -37,10 +37,25 @@
         </section>
     </div>
 
+    <!--Task View Template-->
+    <script type="text/template" id="task-template">
+        <div class="task-view">
+            <p>Time Left: <span class="time-left"><%= timeLeft %></span></p>
+            <span class="project-span"><%= project %></span>
+            <button class="destroy">cancel</button>
+            <button class="pause">pause</button>
+            <button class="finish">finish</button>
+        </div>
+        <% if (completed) { %>
+        <button id="clear-completed">Clear completed (<%= completed %>)</button>
+        <% } %>
+    </script>
+
     <!--JS Libraries-->
     <script src="js/libs/jquery-1.9.0.js"></script>
     <script src="js/libs/underscore.js"></script>
     <script src="js/libs/backbone.js"></script>
+    <script src="js/libs/backbone.localStorage.js"></script>
     <script src="js/libs/backbone-relational.js"></script>
 
     <!--Backbone.js Scripts-->

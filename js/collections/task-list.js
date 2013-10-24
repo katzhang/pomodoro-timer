@@ -1,5 +1,8 @@
 var app = app || {};
 
-app.ProjectList = Backbone.Collection.extend({
-	model: app.Project
+app.Task,List = Backbone.Collection.extend({
+	model: app.Task,
+
+	localStorage: new Backbone.LocalStorage('tasks'),
+
 });
