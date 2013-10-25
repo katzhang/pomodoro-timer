@@ -16,24 +16,18 @@
             </nav>
         </header>
 
-        <section class="project">
-            <ul class="project-list">
-                <li>
-                    <div class="view">
-                        <input type="checkbox" class="toggle">
-                        <label>Project one</label>
-                        <button class="destroy"></button>
-                    </div>
-                    <input type="text" class="edit" value="Project one">
-                </li>
-            </ul>
-        </section>
+        <section id="app">
+            <form action="" class="new-project">
+                <input id="new-project-title" placeholder="What needs to be done?" autofocus>
+            </form>
 
-        <section class="task">
-            <p>Time Left: <span class="time-left">23: 39</span></p>
-            <button class="destroy">cancel</button>
-            <button class="pause">pause</button>
-            <button class="finish">finish</button>
+            <form action="" class="new-task">
+                <button class="new-task">Start a new task</button>
+            </form>
+
+            <ul class="project-list"></ul>
+
+            <section class="current-task"></section>
         </section>
     </div>
 
@@ -49,6 +43,14 @@
         <% if (completed) { %>
         <button id="clear-completed">Clear completed (<%= completed %>)</button>
         <% } %>
+    </script>
+
+    <!--Project View Template-->
+    <script type="text/template" id="project-template">
+        <div class="project-view">
+            <p><%= title %></p>
+            <p><%= tasks %></p>
+        </div>
     </script>
 
     <!--JS Libraries-->
