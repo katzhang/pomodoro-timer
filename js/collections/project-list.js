@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.ProjectList = Backbone.Collection.extend({
+var ProjectList = Backbone.Collection.extend({
 	model: app.Project,
 
 	localStorage: new Backbone.LocalStorage('projects'),
@@ -23,4 +23,4 @@ app.ProjectList = Backbone.Collection.extend({
 	}
 });
 
-app.Projects = new app.ProjectList();
+app.Projects = new ProjectList();

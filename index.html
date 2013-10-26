@@ -18,7 +18,8 @@
 
         <section id="app">
             <form action="" class="new-project">
-                <input id="new-project-title" placeholder="What needs to be done?" autofocus>
+                <input id="new-project-title" placeholder="What's your new project?" autofocus>
+                <button class="clear-all-projects">Clear All Projects</button>
             </form>
 
             <form action="" class="new-task">
@@ -49,7 +50,6 @@
     <script type="text/template" id="project-template">
         <div class="project-view">
             <p><%= title %></p>
-            <p><%= tasks %></p>
         </div>
     </script>
 
@@ -67,6 +67,7 @@
     <script src="js/collections/task-list.js"></script>
     <script src="js/views/project.js"></script>
     <script src="js/views/task.js"></script>
+    <script src="js/views/app.js"></script>
     <script src="js/app.js"></script>
 
   </body>
