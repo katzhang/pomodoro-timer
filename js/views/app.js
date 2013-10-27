@@ -11,15 +11,18 @@ app.AppView = Backbone.View.extend({
 	},
 
 	initialize:function() {
+		console.log('app view initialized');
 		this.$pTitle = this.$('#new-project-title');
 		this.$tButton = this.$('#new-task');
 
 		this.listenTo(app.Projects, 'add', this.addProject);
 		this.listenTo(app.Projects, 'reset', this.addAllProjects);
+		this.listenTo(app.Projects, 'all', this.render);
+
 		this.listenTo(app.Tasks, 'add', this.addTask);
 
 		//nested Views?
-		this.listenTo(app.Projects, 'reset', this.render);
+		// this.listenTo(app.Projects, 'reset', this.render);
 		this.listenTo(app.Tasks, 'all', this.render);
 
 		app.Projects.fetch();
@@ -27,16 +30,20 @@ app.AppView = Backbone.View.extend({
 	},
 
 	render: function() {
-		console.log('from render' + app.Projects.length)
-		if(app.Projects.length) {
-			console.log('there are projects');
-			this.$('.project-list').show();
-			app.Projects.each(this.addProject, this);
-		} else {
-			this.$('.project-list').hide();
-		}
+		console.log('render');
+		// if(app.Projects.length) {
+		// 	console.log('there are projects');
+			// this.$('.project-list').show();
+		// 	app.Projects.each(this.addProject, this);
+		// } else {
+		// 	this.$('.project-list').hide();
+		// }
 
-		// app.Projects.each(this.addProject, this);
+		if(app.Projects.length) {
+			$('.project-list').show();
+		} else {
+			$('.project-list').hide();
+		}
 
 	},
 
@@ -46,30 +53,41 @@ app.AppView = Backbone.View.extend({
 		}
 	},
 
-	createProject: function() {
-      if ( event.which !== ENTER_KEY || !this.$pTitle.val().trim() ) {
-        return;
-      }
+	createProject: function(e) {
+        if ( event.which !== ENTER_KEY || !this.$pTitle.val().trim() ) {
+        	return;
+      	}
+      	console.log('createProject');
 
-      app.Projects.create( this.newProjectAttributes());
-      this.$pTitle.val('');
+      	app.Projects.create( this.newProjectAttributes());
+      	this.$pTitle.val('');
 
 	},
 
-	clearAllProjects: function() {
-		console.log('clear all');
-		app.Projects.reset();
-		console.log(app.Projects.length);
+	destroyProject: function(project) {
+		console.log('destroyProject');
+		project.destroy();
+	},
+
+	clearAllProjects: function(e) {
+		// e.preventDefault();
+		console.log('clearAllProjects');
+		var model;
+
+		while(model = app.Projects.first()) {
+			model.destroy();
+		}
 	},
 
 	addProject: function(project) {
+		console.log('addProject');
 		var view = new app.ProjectView({model: project});
 		$('.project-list').append(view.render().el);
 	},
 
 	// Add all items in the **Todos** collection at once.
-	addAll: function () {
-		this.$('.project-list').html('');
+	addAllProjects: function () {
+		$('.project-list').html('');
 		app.Projects.each(this.addProject, this);
 	},
 
