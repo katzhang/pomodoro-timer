@@ -22,9 +22,6 @@ app.TaskView = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html(this.template(this.model.toJSON()));
-		setTimeout(function() {
-			$.getScript('js/scripts.js');
-		}, 500);
 		return this;
 	},
 

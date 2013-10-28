@@ -93,6 +93,9 @@ app.AppView = Backbone.View.extend({
 		console.log('addTask');
 		var view = new app.TaskView({model: task});
 		$('.current-task').append(view.render().el);
+		setTimeout(function() {
+			$.getScript('js/scripts.js');
+		}, 500);
 	},
 
 })

@@ -1,39 +1,25 @@
 /*Task Countdown Timer*/
-var taskTimer = new (function() {
+
 
     var $countdown;
     var $form;
     var incrementTime = 70;
     var currentTime = 1500000; // 25 minutes (in milliseconds)
+    var taskTimer = $.timer(updateTimer, incrementTime, true);
     
-    $(function() {
+
 
         // Setup the timer
-        $countdown = $('#countdown');
-        taskTimer.Timer = $.timer(updateTimer, incrementTime, true);
+    $countdown = $('#countdown')
 
-        $('#play').click(function() {
-            console.log('clicked play');
-            // taskTimer.Timer.toggle();
-        });
 
-        // Setup form
-        $form = $('#taskTimerform');
-        $form.bind('submit', function() {
-            taskTimer.resetCountdown();
-            return false;
-        });
-
-        // $('#play').click(function() {
-        //     console.log('clicked play');
-        //     taskTimer.Timer.toggle();
-        // });
-
-        // $('#stop').click(function() {
-        //     taskTimer.resetCountdown()
-        // });
-
+    // Setup form
+    $form = $('#taskTimerform');
+    $form.bind('submit', function() {
+        resetCountdown();
+        return false;
     });
+
 
     function updateTimer() {
 
@@ -43,7 +29,7 @@ var taskTimer = new (function() {
 
         // If timer is complete, trigger alert
         if (currentTime == 0) {
-            taskTimer.Timer.stop();
+            taskTimer.stop();
             alert('Example 2: Countdown timer complete!');
             taskTimer.resetCountdown();
             return;
@@ -55,7 +41,7 @@ var taskTimer = new (function() {
 
     }
 
-    this.resetCountdown = function() {
+    function resetCountdown() {
         console.log('resetCountdown');
 
         // Get time from form
@@ -63,29 +49,18 @@ var taskTimer = new (function() {
         if (newTime > 0) {currentTime = newTime;}
 
         // Stop and reset timer
-        taskTimer.Timer.stop().once();
+        taskTimer.stop().once();
 
     };
 
-//             $('#play').click(function() {
-//             console.log('clicked play');
-//             taskTimer.Timer.toggle();
-//         });
 
-//         $('#stop').click(function() {
-//             taskTimer.resetCountdown()
-//         });
+    $('#play').click(function() {
+        taskTimer.toggle();
+    });
 
-// });
-
-        $('#play').click(function() {
-            console.log('clicked play');
-            taskTimer.Timer.toggle();
-        });
-
-        $('#stop').click(function() {
-            taskTimer.resetCountdown()
-        });
+    $('#stop').click(function() {
+        resetCountdown()
+    });
 
 
 // Common functions
