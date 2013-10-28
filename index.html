@@ -22,28 +22,27 @@
                 <span class="clear-all-projects">Clear All Projects</span>
             </form>
 
-            <form action="" class="new-task">
-                <button class="new-task">Start a new task</button>
-            </form>
+            <span class="new-task">Start a new task</span>
+
 
             <ul class="project-list"></ul>
 
-            <section class="current-task"></section>
+            <section class="current-task">
+            </section>
         </section>
     </div>
 
     <!--Task View Template-->
     <script type="text/template" id="task-template">
         <div class="task-view">
-            <p>Time Left: <span class="time-left"><%= timeLeft %></span></p>
-            <span class="project-span"><%= project %></span>
-            <button class="destroy">cancel</button>
-            <button class="pause">pause</button>
-            <button class="finish">finish</button>
+                <span id="countdown"></span>
+                <form id="taskTimerform">
+                    <input type="button" id="play" value="Play/Pause">
+                    <input type="button" id="stop" value="Stop/Reset">
+                    <input type="button" id="cancel" value="Cancel">
+                    <input type="text" name="startTime" value="1500" style="width:30px;">
+                </form>
         </div>
-        <% if (completed) { %>
-        <button id="clear-completed">Clear completed (<%= completed %>)</button>
-        <% } %>
     </script>
 
     <!--Project View Template-->
@@ -55,10 +54,14 @@
 
     <!--JS Libraries-->
     <script src="js/libs/jquery-1.9.0.js"></script>
+    <script src="js/libs/jquery.timer.js"></script>
     <script src="js/libs/underscore.js"></script>
     <script src="js/libs/backbone.js"></script>
     <script src="js/libs/backbone.localStorage.js"></script>
     <script src="js/libs/backbone-relational.js"></script>
+
+    <!--Custom Scripts-->
+    <!-- // <script src="js/scripts.js"></script> -->
 
     <!--Backbone.js Scripts-->
     <script src="js/models/project.js"></script>

@@ -1,9 +1,10 @@
 var app = app || {};
 
 var TaskList = Backbone.Collection.extend({
-	model: app.Task
+	
+	model: app.Task,
 
-	//localStorage: new Backbone.LocalStorage('tasks')
+	localStorage: new Backbone.LocalStorage('tasks')
 
 });
 

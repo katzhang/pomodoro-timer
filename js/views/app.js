@@ -7,7 +7,7 @@ app.AppView = Backbone.View.extend({
 	events: {
 		'keypress #new-project-title': 'createProject',
 		'click .clear-all-projects': 'clearAllProjects',
-		'click #new-task': 'createTask'
+		'click .new-task': 'createTask'
 	},
 
 	initialize:function() {
@@ -31,13 +31,6 @@ app.AppView = Backbone.View.extend({
 
 	render: function() {
 		console.log('render');
-		// if(app.Projects.length) {
-		// 	console.log('there are projects');
-			// this.$('.project-list').show();
-		// 	app.Projects.each(this.addProject, this);
-		// } else {
-		// 	this.$('.project-list').hide();
-		// }
 
 		if(app.Projects.length) {
 			$('.project-list').show();
@@ -92,7 +85,14 @@ app.AppView = Backbone.View.extend({
 	},
 
 	createTask: function() {
+		console.log('createTask');
+		app.Tasks.create({timeLeft: 25*60*1000});
+	},
 
-	}
+	addTask: function(task) {
+		console.log('addTask');
+		var view = new app.TaskView({model: task});
+		$('.current-task').append(view.render().el);
+	},
 
 })

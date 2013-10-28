@@ -2,7 +2,9 @@ var app = app || {};
 
 app.TaskView = Backbone.View.extend({
 
-	tagName: 'section',
+	tagName: 'div',
+
+	id:'current-task-wrapper',
 
 	template: _.template( $('#task-template').html()),
 
@@ -20,6 +22,9 @@ app.TaskView = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html(this.template(this.model.toJSON()));
+		setTimeout(function() {
+			$.getScript('js/scripts.js');
+		}, 500);
 		return this;
 	},
 
