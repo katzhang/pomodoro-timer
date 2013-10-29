@@ -23,6 +23,9 @@
             </form>
 
             <span class="new-task">Start a new task</span>
+            <select class="new-task-project">
+                
+            </select>
 
 
             <ul class="project-list"></ul>
@@ -35,6 +38,7 @@
     <!--Task View Template-->
     <script type="text/template" id="task-template">
         <div class="task-view">
+                <p>for what project: <%= project %></p>
                 <span id="countdown"></span>
                 <form id="taskTimerform">
                     <input type="button" id="play" value="Play/Pause">

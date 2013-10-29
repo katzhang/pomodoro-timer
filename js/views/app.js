@@ -7,7 +7,7 @@ app.AppView = Backbone.View.extend({
 	events: {
 		'keypress #new-project-title': 'createProject',
 		'click .clear-all-projects': 'clearAllProjects',
-		'click .new-task': 'createTask'
+		'click .project-list li': 'createTask'
 	},
 
 	initialize:function() {
@@ -84,9 +84,15 @@ app.AppView = Backbone.View.extend({
 		app.Projects.each(this.addProject, this);
 	},
 
-	createTask: function() {
+	createTask: function(e) {
 		console.log('createTask');
-		app.Tasks.create({timeLeft: 25*60*1000});
+		var linkedProject = e.currentTarget.querySelector('p').innerHTML;
+		console.log(linkedProject);
+		var newTask = app.Tasks.create({
+			timeLeft: 25*60*1000, 
+			project: linkedProject
+		});
+		// app.Projects.where({title: linkedProject})[0].push('tasks', newTask);
 	},
 
 	addTask: function(task) {
