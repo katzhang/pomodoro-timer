@@ -3,7 +3,7 @@ var app = app || {};
 app.Project = Backbone.RelationalModel.extend({
 	relations: [{
 		type: 'HasMany',
-		key: 'title',
+		key: 'tasks',
 		relatedModel: 'app.Tasks',
 		reverseRelation: {
 			key: 'project'
@@ -15,6 +15,7 @@ app.Project = Backbone.RelationalModel.extend({
 		createdDate: null,
 		finishedDate: null,
 		finished: false,
-		tag: 'None'
+		tag: 'None',
+		tasks: []
 	}
 });

@@ -28,7 +28,9 @@
             </select>
 
 
-            <ul class="project-list"></ul>
+            <ul class="project-list">
+                <button class="mark-finished">Done</button>
+            </ul>
 
             <section class="current-task">
             </section>
@@ -38,7 +40,6 @@
     <!--Task View Template-->
     <script type="text/template" id="task-template">
         <div class="task-view">
-                <p>for what project: <%= project %></p>
                 <span id="countdown"></span>
                 <form id="taskTimerform">
                     <input type="button" id="play" value="Play/Pause">
@@ -52,7 +53,8 @@
     <!--Project View Template-->
     <script type="text/template" id="project-template">
         <div class="project-view">
-            <p><%= title %></p>
+            <input type="checkbox" name="project-checkbox" value="finished">
+            <span><%= title %></span>
         </div>
     </script>
 

@@ -7,7 +7,8 @@ app.AppView = Backbone.View.extend({
 	events: {
 		'keypress #new-project-title': 'createProject',
 		'click .clear-all-projects': 'clearAllProjects',
-		'click .project-list li': 'createTask'
+		'click .project-list span': 'createTask',
+		'click .mark-finished': 'markFinished'
 	},
 
 	initialize:function() {
@@ -41,8 +42,10 @@ app.AppView = Backbone.View.extend({
 	},
 
 	newProjectAttributes: function() {
+		var currentDate = new Date;
 		return {
-			title: this.$pTitle.val().trim()
+			title: this.$pTitle.val().trim(),
+			createdDate: currentDate.getTime()
 		}
 	},
 
@@ -72,6 +75,22 @@ app.AppView = Backbone.View.extend({
 		}
 	},
 
+	markFinished: function() {
+		console.log('markFinished');
+		$('.project-view').each(function() {
+			var checkbox = $(this).find('input:checkbox');
+			var projectTitle;
+			var project;
+			if(checkbox.is(':checked')) {
+				projectTitle = $(this).find('span');
+				projectTitle.addClass('finished');
+				project = app.Projects.where({title: projectTitle.html()})[0];
+
+				project.set('finished', true);
+			}
+		})
+	},
+
 	addProject: function(project) {
 		console.log('addProject');
 		var view = new app.ProjectView({model: project});
@@ -86,13 +105,15 @@ app.AppView = Backbone.View.extend({
 
 	createTask: function(e) {
 		console.log('createTask');
-		var linkedProject = e.currentTarget.querySelector('p').innerHTML;
+		var linkedProject = e.currentTarget.innerHTML;
+		var tLNumber = 25*60*1000;
 		console.log(linkedProject);
 		var newTask = app.Tasks.create({
-			timeLeft: 25*60*1000, 
+			timeLeft: tLNumber, 
 			project: linkedProject
 		});
-		// app.Projects.where({title: linkedProject})[0].push('tasks', newTask);
+		var currentProject = app.Projects.where({title: linkedProject})[0];
+		currentProject.get('tasks').push(newTask.id);
 	},
 
 	addTask: function(task) {
