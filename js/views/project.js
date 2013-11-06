@@ -17,6 +17,9 @@ app.ProjectView = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html(this.template(this.model.toJSON()));
+		if(this.model.get('finished') === true) {
+			this.$('span').addClass('finished');
+		}
 		return this;
 	}
 

@@ -17,5 +17,13 @@ app.Project = Backbone.RelationalModel.extend({
 		finished: false,
 		tag: 'None',
 		tasks: []
-	}
+	},
+
+    // Toggle the `completed` state of this todo item.
+    finish: function () {
+    	if(!this.get('finished'))
+            this.save({
+                    finished: true
+            });
+    }
 });

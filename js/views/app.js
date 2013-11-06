@@ -27,6 +27,7 @@ app.AppView = Backbone.View.extend({
 		this.listenTo(app.Tasks, 'all', this.render);
 
 		app.Projects.fetch();
+		app.Projects.set(app.Projects.models);
 
 	},
 
@@ -84,9 +85,9 @@ app.AppView = Backbone.View.extend({
 			if(checkbox.is(':checked')) {
 				projectTitle = $(this).find('span');
 				projectTitle.addClass('finished');
+				
 				project = app.Projects.where({title: projectTitle.html()})[0];
-
-				project.set('finished', true);
+				project.finish();
 			}
 		})
 	},
