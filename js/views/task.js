@@ -10,7 +10,8 @@ app.TaskView = Backbone.View.extend({
 
 	events: {
 		'click .destroy': 'clear',
-		'click .finish': 'markFinished'
+		'click .finish': 'markFinished',
+		'click #cancel': 'cancelTask'
 
 	},
 
@@ -31,6 +32,10 @@ app.TaskView = Backbone.View.extend({
 
 	markFinished: function() {
 		this.model.set('finished', true);
+	},
+
+	cancelTask: function() {
+		this.model.destroy();
 	}
 
 })
