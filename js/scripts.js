@@ -30,8 +30,8 @@
         // If timer is complete, trigger alert
         if (currentTime == 0) {
             taskTimer.stop();
-            alert('Example 2: Countdown timer complete!');
-            taskTimer.resetCountdown();
+            // alert('Example 2: Countdown timer complete!');
+            // taskTimer.resetCountdown();
             return;
         }
 

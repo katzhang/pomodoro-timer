@@ -12,14 +12,14 @@ app.Task = Backbone.Model.extend({
 		var self = this;
 		setInterval(
 			(function(self) {
-			return function() {
-				var timeLeft = self.getTimeLeft();
-				if(timeLeft = 0) {
-					this.save({finished: true});
-				} else {
-					console.log('not finished yet');
+				return function() {
+					var timeLeft = self.getTimeLeft();
+					if(timeLeft = '00:00:00') {
+						self.save({finished: true});
+					} else {
+						console.log('not finished yet');
+					}
 				}
-			}
 			// this.getTimeLeft.apply(self);
 		})(this), 50);
 	},

@@ -32,7 +32,7 @@ app.AppView = Backbone.View.extend({
 	},
 
 	render: function() {
-		console.log('render');
+		// console.log('render');
 
 		if(app.Projects.length) {
 			$('.project-list').show();

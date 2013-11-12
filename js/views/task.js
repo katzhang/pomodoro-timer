@@ -11,14 +11,15 @@ app.TaskView = Backbone.View.extend({
 	events: {
 		'click .destroy': 'clear',
 		'click .finish': 'markFinished',
-		'click #cancel': 'cancelTask'
+		'click #cancel': 'cancelTask',
+		'click #play': 'updateTime'
 
 	},
 
 	initialize: function() {
 		// this.model = new app.Task;
 		this.listenTo(this.model, 'destroy', this.remove);
-		this.listenTo(this.model, 'change', this.render);
+		// this.listenTo(this.model, 'change', this.render);
 	},
 
 	render: function() {
@@ -36,6 +37,17 @@ app.TaskView = Backbone.View.extend({
 
 	cancelTask: function() {
 		this.model.destroy();
+	},
+
+	updateTime: function() {
+		var self = this;
+		setInterval(
+			(function(self) {
+				return function() {
+					var currentTimeLeft = $('#countdown').html();
+					self.model.save({timeLeft: currentTimeLeft});
+				}
+		})(this), 50);
 	}
 
 })
