@@ -4,7 +4,7 @@
     var $countdown;
     var $form;
     var incrementTime = 70;
-    var currentTime = 1500000; // 25 minutes (in milliseconds)
+    var currentTime = 10000; // 25 minutes (in milliseconds)
     var taskTimer = $.timer(updateTimer, incrementTime, false);
     
 

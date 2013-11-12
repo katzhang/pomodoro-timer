@@ -107,12 +107,13 @@ app.AppView = Backbone.View.extend({
 	createTask: function(e) {
 		console.log('createTask');
 		var linkedProject = e.currentTarget.innerHTML;
-		var tLNumber = 25*60*1000;
+		var tLNumber = 10*1000;
 		console.log(linkedProject);
 		var newTask = app.Tasks.create({
 			timeLeft: tLNumber, 
 			project: linkedProject
 		});
+		newTask.checkTimeLeft();
 		var currentProject = app.Projects.where({title: linkedProject})[0];
 		currentProject.get('tasks').push(newTask.id);
 	},
