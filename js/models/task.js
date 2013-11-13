@@ -10,18 +10,21 @@ app.Task = Backbone.Model.extend({
 
 	checkTimeLeft: function() {
 		var self = this;
-		setInterval(
-			(function(self) {
-				return function() {
-					var timeLeft = self.getTimeLeft();
-					if(timeLeft = '00:00:00') {
-						self.save({finished: true});
-					} else {
-						console.log('not finished yet');
+		var intervalID = 
+			setInterval(
+				(function(self) {
+					return function() {
+						var timeLeft = self.getTimeLeft();
+						if(timeLeft === '00:00:00') {
+							self.save({finished: true});
+							console.log(self.get('project'));
+							clearInterval(intervalID);
+						} else {
+							console.log('not finished yet');
+						}
 					}
-				}
-			// this.getTimeLeft.apply(self);
-		})(this), 50);
+				// this.getTimeLeft.apply(self);
+			})(this), 50);
 	},
 
 	getTimeLeft: function() {

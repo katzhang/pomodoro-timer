@@ -1,6 +1,6 @@
 var app = app || {};
 
-app.Project = Backbone.RelationalModel.extend({
+app.Project = Backbone.Model.extend({
 	relations: [{
 		type: 'HasMany',
 		key: 'tasks',
@@ -16,7 +16,8 @@ app.Project = Backbone.RelationalModel.extend({
 		finishedDate: null,
 		finished: false,
 		tag: 'None',
-		tasks: []
+		currentTask: [],
+		finishedTasks: []
 	},
 
     // Toggle the `completed` state of this todo item.

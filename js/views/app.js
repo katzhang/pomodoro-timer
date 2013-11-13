@@ -115,7 +115,7 @@ app.AppView = Backbone.View.extend({
 		});
 		newTask.checkTimeLeft();
 		var currentProject = app.Projects.where({title: linkedProject})[0];
-		currentProject.get('tasks').push(newTask.id);
+		currentProject.get('currentTask').push(newTask.id);
 	},
 
 	addTask: function(task) {
