@@ -17,7 +17,8 @@ app.Task = Backbone.Model.extend({
 						var timeLeft = self.getTimeLeft();
 						if(timeLeft === '00:00:00') {
 							self.save({finished: true});
-							console.log(self.get('project'));
+							var project = app.Projects.where({title: self.get('project')})[0];
+							project.get('finishedTasks').push(self.id);
 							clearInterval(intervalID);
 						} else {
 							console.log('not finished yet');
