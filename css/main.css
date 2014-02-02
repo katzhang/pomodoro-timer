@@ -1,11 +1,14 @@
 /*Global Classes*/
 /*Structures*/
 .wrapper {
-  margin: 0 auto;
+  background: white;
+  height: 100%;
+  left: 15%;
+  position: absolute;
+  right: 15%;
   width: 70%; }
 
 .main-header {
-  background: #ecf0f1;
   display: table;
   height: 50px;
   padding: 1%;
@@ -14,27 +17,51 @@
 .main-header h1 {
   color: #e74c3c;
   display: table-cell;
+  font-size: 2em;
   /*float: left;*/
   /*height: 100%;*/
-  vertical-align: middle;
-  width: 30%; }
+  vertical-align: middle; }
 
 .main-nav {
   display: table-cell;
   height: 100%;
   vertical-align: middle; }
 
+#app {
+  padding: 40px 20px; }
+
 /*Styling*/
+html, body {
+  background: #ecf0f1; }
+
 .main-nav a {
   background: #e74c3c;
   border-radius: 5px;
-  color: #fff;
+  color: white;
   padding: 1% 2%;
   text-decoration: none; }
 
 .main-nav a:hover {
   background: #fff;
   color: #e74c3c; }
+
+#countdown {
+  color: #e74c3c;
+  font-size: 4.5em; }
+
+input[type='button'], button {
+  background: #ecf0f1;
+  border: none; }
+
+.clear-all-projects {
+  background: #e74c3c;
+  color: white;
+  margin-left: 20px;
+  padding: 5px; }
+
+#app > p,
+.project-list p {
+  margin: 20px 0; }
 
 /*Fonts*/
 a, span, p {

@@ -95,7 +95,7 @@ app.AppView = Backbone.View.extend({
 	addProject: function(project) {
 		console.log('addProject');
 		var view = new app.ProjectView({model: project});
-		$('.project-list').append(view.render().el);
+		$('.project-list').prepend(view.render().el);
 	},
 
 	// Add all items in the **Todos** collection at once.
@@ -106,6 +106,10 @@ app.AppView = Backbone.View.extend({
 
 	createTask: function(e) {
 		console.log('createTask');
+		var projectSpan = $(e.currentTarget);
+		if(projectSpan.hasClass('finished')) {
+			return;
+		}
 		var linkedProject = e.currentTarget.innerHTML;
 		var tLNumber = 10*1000;
 		console.log(linkedProject);

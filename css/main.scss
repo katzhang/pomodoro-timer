@@ -1,16 +1,20 @@
 /*Global Classes*/
 
-$red: #ecf0f1;
-
+$grey: #ecf0f1;
+$red: #e74c3c;
+$white: #fff;
 
 /*Structures*/
 .wrapper {
-	margin: 0 auto;
+	background: $white;
+	height: 100%;
+	left: 15%;
+	position: absolute;
+	right: 15%;
 	width: 70%;
 }
 
 .main-header {
-	background: $red;
 	display: table;
 	height: 50px;
 	padding: 1%;
@@ -18,12 +22,12 @@ $red: #ecf0f1;
 }
 
 .main-header h1 {
-	color: #e74c3c;
+	color: $red;
 	display: table-cell;
+	font-size: 2em;
 	/*float: left;*/
 	/*height: 100%;*/
 	vertical-align: middle;
-	width: 30%;
 }
 
 .main-nav {
@@ -32,18 +36,48 @@ $red: #ecf0f1;
 	vertical-align: middle;
 }
 
+#app {
+	padding: 40px 20px;
+}
+
 /*Styling*/
+html, body {
+	background: $grey;
+}
+
 .main-nav a {
-	background: #e74c3c;
+	background: $red;
 	border-radius: 5px;
-	color: #fff;
+	color: $white;
 	padding: 1% 2%;
 	text-decoration: none;
 }
 
 .main-nav a:hover {
 	background: #fff;
-	color: #e74c3c;
+	color: $red;
+}
+
+#countdown {
+	color: $red;
+	font-size: 4.5em;
+}
+
+input[type='button'], button {
+	background: $grey;
+	border: none;
+}
+
+.clear-all-projects {
+	background: $red;
+	color: $white;
+	margin-left: 20px;
+	padding: 5px;
+}
+
+#app>p,
+.project-list p {
+	margin: 20px 0;
 }
 
 /*Fonts*/

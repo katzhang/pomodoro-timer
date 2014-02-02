@@ -24,3 +24,25 @@ app.ProjectView = Backbone.View.extend({
 	}
 
 });
+
+// app.ProjectListView = Backbone.View.extend({
+
+// 	tagName: 'ul',
+
+// 	className: 'project-list',
+
+// 	initialize: function() {
+// 		var self = this;
+// 		this.listenTo(this.model, 'reset', this.render);
+// 		this.listenTo(this.model, 'add', function(project) {
+// 			self.$el.append(new app.ProjectView({model: project}).render().el);
+// 		})
+// 	},
+
+// 	render: function() {
+// 		this.$el.empty();
+// 		_.each(this.model.models, function(project) {
+// 			this.$el.append(new app.ProjectView({model: project}).render().el);
+// 		});
+// 	}
+// })
